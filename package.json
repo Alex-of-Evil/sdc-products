@@ -5,10 +5,11 @@
     "eslint-plugin-import": "^2.23.4"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "sequelize": "^6.6.2"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "name": "sdc-products",
   "description": "",
