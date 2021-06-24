@@ -1,7 +1,7 @@
 const { productService } = require('../services');
 
-function getProductList() {
-
+function getProductList(req, res) {
+  res.send('got product list');
 }
 
 async function getProduct(req, res) {
@@ -11,12 +11,12 @@ async function getProduct(req, res) {
   res.send(query);
 }
 
-function getStyles() {
-
+function getStyles(req, res) {
+  res.send('got styles list');
 }
 
-function getRelated() {
-
+function getRelated(req, res) {
+  res.send('got related list');
 }
 
 module.exports = {
