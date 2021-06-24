@@ -1,6 +1,6 @@
-async function queryFeatures(client, productId) {
+async function queryStyles(client, productId) {
   const query = {
-    text: 'SELECT feature_name, feature_value FROM features WHERE product_id=$1',
+    text: 'SELECT * FROM styles WHERE product_id=$1',
     values: [productId],
   };
   try {
@@ -13,5 +13,5 @@ async function queryFeatures(client, productId) {
 }
 
 module.exports = {
-  queryFeatures,
+  queryStyles,
 };

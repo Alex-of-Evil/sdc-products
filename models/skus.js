@@ -1,7 +1,7 @@
-async function queryFeatures(client, productId) {
+async function querySkus(client, styleId) {
   const query = {
-    text: 'SELECT feature_name, feature_value FROM features WHERE product_id=$1',
-    values: [productId],
+    text: 'SELECT id, size, quantity FROM skus WHERE style_id=$1',
+    values: [styleId],
   };
   try {
     const response = await client.query(query);
@@ -13,5 +13,5 @@ async function queryFeatures(client, productId) {
 }
 
 module.exports = {
-  queryFeatures,
+  querySkus,
 };

@@ -62,3 +62,14 @@ CREATE DATABASE products_api
   FROM '/raw/skus.csv'
   DELIMITER ','
   CSV HEADER;
+
+    CREATE TABLE IF NOT EXISTS related(
+    id SERIAL NOT NULL PRIMARY KEY,
+    current_product_id integer,
+    related_product_id integer REFERENCES product
+  );
+
+  COPY related(id, current_product_id, related_product_id )
+  FROM '/raw/related.csv'
+  DELIMITER ','
+  CSV HEADER;

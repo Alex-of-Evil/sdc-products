@@ -1,7 +1,7 @@
-async function queryProduct(client, id) {
+async function queryProduct(client, productId) {
   const query = {
     text: 'SELECT * FROM products WHERE id=$1',
-    values: [id],
+    values: [productId],
   };
   try {
     const response = await client.query(query);
