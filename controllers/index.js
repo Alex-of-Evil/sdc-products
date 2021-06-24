@@ -5,9 +5,9 @@ function getProductList() {
 }
 
 async function getProduct(req, res) {
-  console.log('controller');
-  const query = productService(1);
-  console.log('sending response...')
+  const id = req.params.product_id;
+  const query = await productService(id);
+  console.log('sending response...');
   res.send(query);
 }
 
