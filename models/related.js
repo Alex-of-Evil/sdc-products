@@ -1,7 +1,7 @@
-async function querySkus(client, styleId) {
+async function queryRelated(client, productId) {
   const query = {
-    text: 'SELECT id, size, quantity FROM skus WHERE style_id=$1',
-    values: [styleId],
+    text: 'SELECT related_product_id FROM related WHERE current_product_id=$1',
+    values: [productId],
   };
   try {
     const response = await client.query(query);
@@ -13,5 +13,5 @@ async function querySkus(client, styleId) {
 }
 
 module.exports = {
-  querySkus,
+  queryRelated,
 };
