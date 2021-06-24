@@ -1,12 +1,14 @@
-const { productService } = require('../services');
+const services = require('../services');
 
-function getProductList(req, res) {
-  res.send('got product list');
+async function getProductList(req, res) {
+  const { count} = req.query;
+  const query = await services.productListService(count);
+  res.send(query);
 }
 
 async function getProduct(req, res) {
   const id = req.params.product_id;
-  const query = await productService(id);
+  const query = await services.productService(id);
   console.log('sending response...');
   res.send(query);
 }
