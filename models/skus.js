@@ -1,6 +1,6 @@
 async function querySkus(client, styleId) {
   const query = {
-    text: 'SELECT id, size, quantity FROM skus WHERE style_id=$1',
+    text: 'SELECT id AS sku, size, quantity FROM skus WHERE style_id=$1',
     values: [styleId],
   };
   try {

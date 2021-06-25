@@ -12,8 +12,10 @@ async function getProduct(req, res) {
   res.send(serviceResponse);
 }
 
-function getStyles(req, res) {
-  res.send('got styles list');
+async function getStyles(req, res) {
+  const id = req.params.product_id;
+  const serviceResponse = await services.stylesService(id);
+  res.send(serviceResponse);
 }
 
 async function getRelated(req, res) {
