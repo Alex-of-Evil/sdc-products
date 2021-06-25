@@ -1,6 +1,6 @@
 async function queryFeatures(client, productId) {
   const query = {
-    text: 'SELECT feature_name, feature_value FROM features WHERE product_id=$1',
+    text: 'SELECT feature_name AS name, feature_value AS value FROM features WHERE product_id=$1',
     values: [productId],
   };
   try {

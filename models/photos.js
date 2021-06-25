@@ -1,6 +1,6 @@
 async function queryPhotos(client, styleId) {
   const query = {
-    text: 'SELECT photo_url, thumbnail_url FROM photos WHERE style_id=$1',
+    text: 'SELECT photo_url AS url, thumbnail_url FROM photos WHERE style_id=$1',
     values: [styleId],
   };
   try {

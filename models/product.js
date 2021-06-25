@@ -12,6 +12,21 @@ async function queryProduct(client, productId) {
   }
 }
 
+async function queryProductList(client, count = 5) {
+  const query = {
+    text: 'SELECT * FROM products WHERE id BETWEEN $1 and $2',
+    values: [1, count],
+  };
+  try {
+    const response = await client.query(query);
+    return response.rows;
+  } catch (err) {
+    console.error(err.stack);
+    return null;
+  }
+}
+
 module.exports = {
   queryProduct,
+  queryProductList,
 };
