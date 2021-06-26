@@ -23,11 +23,11 @@ async function querySkus(client, styleId) {
         (
         SELECT id, size, quantity
         FROM skus
-        WHERE style_id=1
+        WHERE style_id=$1
         ) AS m
       ) AS q
     ) as z
-  `
+  `;
 
   const query = {
     text,
