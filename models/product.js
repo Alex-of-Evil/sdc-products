@@ -36,7 +36,6 @@ async function queryProduct(client, productId) {
     const response = await client.query(query);
     return response.rows[0].json_build_object;
   } catch (err) {
-    console.error(err.stack);
     return null;
   }
 }
@@ -50,7 +49,6 @@ async function queryProductList(client, start, end) {
     const response = await client.query(query);
     return response.rows;
   } catch (err) {
-    console.error(err.stack);
     return null;
   }
 }

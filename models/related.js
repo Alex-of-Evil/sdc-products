@@ -7,7 +7,6 @@ async function queryRelated(client, productId) {
     const response = await client.query(query);
     return response.rows[0].array_agg;
   } catch (err) {
-    console.error(err.stack);
     return null;
   }
 }

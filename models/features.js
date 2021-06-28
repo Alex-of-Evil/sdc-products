@@ -7,7 +7,6 @@ async function queryFeatures(client, productId) {
     const response = await client.query(query);
     return response.rows;
   } catch (err) {
-    console.error(err.stack);
     return null;
   }
 }
