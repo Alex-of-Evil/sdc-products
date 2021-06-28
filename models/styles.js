@@ -4,15 +4,7 @@ async function queryStyles(client, productId) {
     SELECT json_build_object(
       'product_id', $1,
       'results',
-      json_build_object(
-        'style_id', (SELECT style_id),
-        'name', (SELECT name),
-        'original_price', (SELECT original_price),
-        'sale_price', (SELECT sale_price),
-        'default?', (SELECT is_default),
-        'photos', (SELECT photos_arr),
-        'skus', (SELECT skus)
-      )
+      json_agg(complete)
     )
     FROM (
       SELECT
@@ -21,7 +13,7 @@ async function queryStyles(client, productId) {
         original_price,
         sale_price,
         is_default,
-        photos_arr,
+        photos_arr AS photos,
         skus
       FROM (
         SELECT *
@@ -79,7 +71,7 @@ async function queryStyles(client, productId) {
             WHERE style_id IN (
               SELECT style_id
               FROM styles
-              WHERE product_id=1
+              WHERE product_id=$1
             )
             ) AS mmmm
           ) AS qqqq
@@ -87,7 +79,7 @@ async function queryStyles(client, productId) {
         ) skuq
         ON skuq.sstyle_id = styleq2.style_id
       ) AS styleskuphoto
-    ) AS finally
+    ) AS complete
     `,
 
     values: [productId],

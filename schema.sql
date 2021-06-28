@@ -69,7 +69,7 @@
   );
 
   COPY photos(id, style_id, photo_url, thumbnail_url)
-  FROM '/raw/skus.csv'
+  FROM '/raw/photos.csv'
   DELIMITER ','
   CSV HEADER;
 
@@ -87,3 +87,7 @@
   CSV HEADER;
 
   CREATE INDEX related_to_prod ON related (current_product_id);
+
+  DELETE FROM photos WHERE id=48;
+  DELETE FROM related WHERE related_product_id=0;
+  UPDATE skus SET size = 'XXL' WHERE id=6;
