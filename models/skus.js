@@ -35,7 +35,6 @@ async function querySkus(client, styleId) {
   };
   try {
     const response = await client.query(query);
-    console.log(response);
     return response.rows;
   } catch (err) {
     console.error(err.stack);

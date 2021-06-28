@@ -33,16 +33,13 @@ async function queryStyles(client, productId) {
             FROM styles
             WHERE product_id=$1
           ) styleq
-        ) AS styleq2
+        )
+        AS styleq2
         LEFT JOIN (
           SELECT style_id AS pstyle_id, json_agg(
             json_build_object(
-            'url', (
-              SELECT photo_url
-              ),
-            'thumbnail_url', (
-              SELECT thumbnail_url
-              )
+              'thumbnail_url', (SELECT thumbnail_url),
+              'url', (SELECT photo_url)
             )
           ) AS photos_arr
           FROM photos

@@ -1,8 +1,8 @@
 const services = require('../services');
 
 async function getProductList(req, res) {
-  const { count } = req.query;
-  const serviceResponse = await services.productListService(count);
+  const { count, page } = req.query;
+  const serviceResponse = await services.productListService(count, page);
   res.send(serviceResponse);
 }
 
