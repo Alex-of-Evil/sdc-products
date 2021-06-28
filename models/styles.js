@@ -1,15 +1,19 @@
 async function queryStyles(client, productId) {
   const query = {
     text: `
-    SELECT json_build_object('product_id', $1, 'results', json_build_object(
-      'style_id', (SELECT style_id),
-      'name', (SELECT name),
-      'original_price', (SELECT original_price),
-      'sale_price', (SELECT sale_price),
-      'default?', (SELECT is_default),
-      'photos', (SELECT photos_arr),
-      'skus', (SELECT skus)
-    ))
+    SELECT json_build_object(
+      'product_id', $1,
+      'results',
+      json_build_object(
+        'style_id', (SELECT style_id),
+        'name', (SELECT name),
+        'original_price', (SELECT original_price),
+        'sale_price', (SELECT sale_price),
+        'default?', (SELECT is_default),
+        'photos', (SELECT photos_arr),
+        'skus', (SELECT skus)
+      )
+    )
     FROM (
       SELECT
         style_id,
