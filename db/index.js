@@ -1,10 +1,11 @@
 const { Pool } = require('pg');
+const { POSTGRES_PW } = require('../postgres');
 
 const pool = new Pool({
   user: 'postgres',
   host: 'sdc_db_1',
   database: 'products_api',
-  password: 'postgres',
+  password: POSTGRES_PW,
   port: '5432',
 });
 

@@ -6,17 +6,17 @@ services:
     depends_on:
       - 'db'
     ports:
-      - '8080:80'
+      - '80:80'
     volumes:
       -  /home/alex/hr/sdc/sdc-products/:/src/app
 
   db:
     image: postgres:latest
     volumes:
-      - /home/alex/hr/sdc/sdc-database/data:/var/lib/postgresql/data
-      - /home/alex/hr/sdc/sdc-database/raw:/raw
-      - /home/alex/hr/sdc/sdc-products/:/app
-      - /home/alex/hr/sdc/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - /var/lib/postgresql/data:/var/lib/postgresql/data
+      - /raw:/raw
+      - /srv/products/:/app
+      - /etc/docker/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     restart: always
     environment:
       POSTGRES_PASSWORD: postgres
