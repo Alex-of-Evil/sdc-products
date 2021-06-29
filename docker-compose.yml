@@ -16,6 +16,7 @@ services:
       - /home/alex/hr/sdc/sdc-database/data:/var/lib/postgresql/data
       - /home/alex/hr/sdc/sdc-database/raw:/raw
       - /home/alex/hr/sdc/sdc-products/:/app
+      # - /var/log/postgres:/var/log/postgres
     restart: always
     environment:
       POSTGRES_PASSWORD: postgres
