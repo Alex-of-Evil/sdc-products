@@ -16,7 +16,9 @@ services:
       - /home/alex/hr/sdc/sdc-database/data:/var/lib/postgresql/data
       - /home/alex/hr/sdc/sdc-database/raw:/raw
       - /home/alex/hr/sdc/sdc-products/:/app
-      # - /var/log/postgres:/var/log/postgres
+      - /home/alex/hr/sdc/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     restart: always
     environment:
       POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: products_api
+    command: -c 'config_file=/app/postgresql.conf'
