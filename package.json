@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "jest": "^27.0.5",
+    "jest": "^27.0.6",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.6.2"
