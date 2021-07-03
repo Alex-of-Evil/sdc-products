@@ -1,0 +1,1 @@
+pg_restore -d products_api /raw/dump.sql

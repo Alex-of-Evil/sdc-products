@@ -7,17 +7,21 @@ services:
       - 'db'
     ports:
       - '80:80'
-    volumes:
-      -  /home/alex/hr/sdc/sdc-products/:/src/app
+    environment:
+      NODE_ENV: production
+        #volumes:
+            #  - /srv/sdc:/src/app
 
   db:
     image: postgres:latest
     volumes:
-      - /var/lib/postgresql/data:/var/lib/postgresql/data
+      - /srv/db:/var/lib/postgresql/data
       - /raw:/raw
-      - /srv/products/:/app
-      - /etc/docker/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - /srv/sdc/:/app
+      - /srv/docker:/docker-entrypoint-initdb.d
     restart: always
+    ports:
+      - '5432:5432'
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: products_api

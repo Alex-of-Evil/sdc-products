@@ -1,2 +1,4 @@
 node_modules/
 .eslintcache
+docker-compose.yml
+postgres.js

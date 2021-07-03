@@ -27,7 +27,7 @@ async function queryProduct(client, productId) {
             WHERE
             product_id=$1
             ) AS feat
-        WHERE id=1
+        WHERE id=$1
       ) AS prod
     `,
     values: [productId],
