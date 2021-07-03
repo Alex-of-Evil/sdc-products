@@ -18,7 +18,7 @@ services:
       - /srv/db:/var/lib/postgresql/data
       - /raw:/raw
       - /srv/sdc/:/app
-      - /srv/docker:/docker-entrypoint-initdb.d
+      - /srv/entry:/docker-entrypoint-initdb.d
     restart: always
     ports:
       - '5432:5432'
